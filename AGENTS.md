@@ -36,7 +36,7 @@ No tests, linter or formatter. Verifying a change means running `npm run build` 
 - **`locale` is mandatory** on every page. The `games` collection mixes all locales: filter on `data.locale` wherever it is used.
 - **`translationKey`** links the three versions of a page (the language switcher uses it). Same key in all three files, unique across the site.
 - Permalinks are written by hand and localized (`/games/…`, `/fr/jeux/…`, `/es/juegos/…`).
-- **Adding a game**: one Markdown file per locale under `content/en/games/`, `content/fr/jeux/`, `content/es/juegos/`, with `tags: ['games']`, `order`, `status` (`in-development` or `available`, labels in `strings.json`), `brief`, `card_image`, `image` (social card, JPEG or PNG), optional `play_url`, `google_play`, `app_store`, `release_note`, and `screenshots` (`src`, `alt`, optional `wide`).
+- **Adding a game**: one Markdown file per locale under `content/en/games/`, `content/fr/jeux/`, `content/es/juegos/`, with `tags: ['games']`, `order`, `status` (`in-development`, `beta` or `available`, labels in `strings.json`), `brief`, `card_image`, `image` (social card, JPEG or PNG), optional `play_url` (with `play_note` shown under the button), `google_play`, `app_store`, `release_note`, and `screenshots` (`src`, `alt`, optional `wide`).
 - New content lands in all three languages.
 - `head-commons.webc` comes from the shared Korrigan Press / lostinbrittany head. Keep its setup and meta blocks in sync; page-specific values must arrive as props from each layout, and `global.*` must be read through helpers, not inline bindings.
 - Markdown goes through Liquid: `{{ }}` and `{% %}` are interpreted. The privacy pages use this to mention analytics only when `analyticsWebsiteId` is set.

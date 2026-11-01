@@ -12,6 +12,7 @@
     "notReleased": "Not released yet.",
     "status": {
       "in-development": "In development",
+      "beta": "Beta",
       "available": "Available"
     },
     "footer": "Made in Brittany by",
@@ -30,6 +31,7 @@
     "notReleased": "Pas encore sorti.",
     "status": {
       "in-development": "En développement",
+      "beta": "Bêta",
       "available": "Disponible"
     },
     "footer": "Fait en Bretagne par",
@@ -48,6 +50,7 @@
     "notReleased": "Todavía no ha salido.",
     "status": {
       "in-development": "En desarrollo",
+      "beta": "Beta",
       "available": "Disponible"
     },
     "footer": "Hecho en Bretaña por",

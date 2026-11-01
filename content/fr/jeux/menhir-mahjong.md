@@ -7,11 +7,12 @@ order: 1
 title: Menhir Mahjong
 brief: Un mahjong solitaire tranquille, à l’identité bretonne.
 description: Un mahjong solitaire tranquille, à l’identité bretonne. Chaque donne peut être résolue, l’annulation est illimitée, le mélange est gratuit et il n’y a pas de chrono.
-status: in-development
+status: beta
 permalink: /fr/jeux/menhir-mahjong/
 card_image: /img/games/menhir-mahjong/icon.webp
 image: /img/games/menhir-mahjong/social-card.jpg
-play_url: ''
+play_url: https://menhir-mahjong.travellingkorrigan.com/
+play_note: La bêta fonctionne dans tout navigateur récent, sur téléphone ou ordinateur. Des choses peuvent encore changer avant la sortie sur Google Play.
 google_play: ''
 app_store: ''
 release_note: Menhir Mahjong est encore en développement. Il sera gratuit sur Google Play et jouable dans votre navigateur, sans compte et sans connexion.
