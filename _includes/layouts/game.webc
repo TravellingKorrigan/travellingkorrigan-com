@@ -1,0 +1,121 @@
+<!doctype html>
+<html :lang="locale">
+<head>
+  <meta webc:is="head-commons" webc:nokeep
+        :@title="title + ' | ' + global.title" :@description="description" :@url="page.url"
+        :@image="image" :@locale="locale" :@type="'article'">
+
+  <style @raw="getBundle('css')" webc:keep></style>
+  <script @raw="getBundle('js')" webc:keep></script>
+</head>
+<body>
+  <main>
+    <site-header></site-header>
+    <article class="game prose">
+      <header class="game-header">
+        <img :src="card_image" alt="" width="160" height="160">
+        <div>
+          <h1 @text="title"></h1>
+          <p class="game-brief" @text="brief"></p>
+          <span class="game-status" webc:if="status" @text="strings[locale].status[status]"></span>
+        </div>
+      </header>
+
+      <div @html="content"></div>
+
+      <h2 @text="strings[locale].playHeading"></h2>
+      <p webc:if="play_url">
+        <a class="play-button" :href="play_url" @text="strings[locale].playInBrowser"></a>
+      </p>
+      <p webc:if="google_play"><a :href="google_play">Google Play</a></p>
+      <p webc:if="app_store"><a :href="app_store">App Store</a></p>
+      <p webc:if="!play_url && !google_play && !app_store" @html="release_note || strings[locale].notReleased"></p>
+
+      <section webc:if="screenshots" class="screenshots">
+        <h2 @text="strings[locale].screenshotsHeading"></h2>
+        <div class="screenshot-grid">
+          <figure webc:for="shot of screenshots" :class="shot.wide ? 'wide' : ''">
+            <img :src="shot.src" :alt="shot.alt" loading="lazy">
+            <figcaption @text="shot.alt"></figcaption>
+          </figure>
+        </div>
+      </section>
+    </article>
+    <site-footer></site-footer>
+  </main>
+</body>
+</html>
+
+<style>
+  .game-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .game-header img {
+    width: 140px;
+    height: 140px;
+    border-radius: 22%;
+    flex-shrink: 0;
+  }
+  .game-header h1 {
+    margin: 0;
+  }
+  .game-brief {
+    margin: 0.25rem 0 0.5rem;
+    color: var(--gray);
+  }
+  .game-status {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: var(--accent-soft);
+  }
+  .play-button {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #1d282d;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  .screenshot-grid figure {
+    margin: 0;
+  }
+  .screenshot-grid figure.wide {
+    grid-column: 1 / -1;
+  }
+  .screenshot-grid img {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+  }
+  .screenshot-grid figcaption {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-top: 0.4rem;
+    line-height: 1.4;
+  }
+  @media (max-width: 480px) {
+    .game-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .game-header img {
+      width: 112px;
+      height: 112px;
+    }
+  }
+</style>

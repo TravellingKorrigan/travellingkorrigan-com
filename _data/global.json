@@ -1,0 +1,9 @@
+{
+  "author": "Horacio Gonzalez",
+  "title": "Travelling Korrigan",
+  "description": "Small games built on web standards. Free to play. Offline. No ads.",
+  "url": "https://travellingkorrigan.com",
+  "defaultSocialImage": "https://travellingkorrigan.com/img/social-card.png",
+  "analyticsSrc": "https://analytics.lostinbrittany.dev/script.js",
+  "analyticsWebsiteId": ""
+}

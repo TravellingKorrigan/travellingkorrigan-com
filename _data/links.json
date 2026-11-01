@@ -1,0 +1,20 @@
+{
+  "en": {
+    "home": { "name": "Home", "url": "/" },
+    "games": { "name": "Games", "url": "/games/" },
+    "about": { "name": "About", "url": "/about/" },
+    "privacy": { "name": "Privacy", "url": "/privacy/" }
+  },
+  "fr": {
+    "home": { "name": "Accueil", "url": "/fr/" },
+    "games": { "name": "Jeux", "url": "/fr/jeux/" },
+    "about": { "name": "À propos", "url": "/fr/a-propos/" },
+    "privacy": { "name": "Confidentialité", "url": "/fr/confidentialite/" }
+  },
+  "es": {
+    "home": { "name": "Inicio", "url": "/es/" },
+    "games": { "name": "Juegos", "url": "/es/juegos/" },
+    "about": { "name": "Acerca de", "url": "/es/acerca-de/" },
+    "privacy": { "name": "Privacidad", "url": "/es/privacidad/" }
+  }
+}

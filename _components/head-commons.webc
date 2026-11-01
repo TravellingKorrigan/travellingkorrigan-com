@@ -1,0 +1,148 @@
+<script webc:setup>
+  // ── Shared head-commons ────────────────────────────────────────────────────
+  // Adapted from the shared head-commons of lostinbrittany.org / .com / .dev
+  // and korriganpress.com. Keep the setup and meta blocks in sync with them;
+  // here only SITE KNOBS, the font links and the analytics helpers differ.
+  //
+  // Scoping rules this component depends on (verified against real builds):
+  //  1. `global.*` cannot be dereferenced in the attribute bindings below.
+  //     Site-wide data must be read through a helper defined in here.
+  //  2. This setup block cannot read per-page data: `page`, `title`,
+  //     `description` … resolve to a single shared object for the whole build,
+  //     so reading them here yields some other page's values.
+  //  3. Therefore every page-specific value arrives as a prop from the layout
+  //     and is passed into these helpers as an argument.
+  // Corollary: never declare a setup-scope binding named after a prop — it
+  // shadows the prop wherever a layout forgets to pass it.
+  //
+  // Props each layout should pass:
+  //   title, description, image, url, locale, canonical_url, type
+
+  // ── SITE KNOBS ──
+  const ASSET_PREFIX = "";            // assets are served from the site root
+  const DEFAULT_LOCALE = "en";    // og:locale for pages that declare none
+
+  function siteUrl() {
+    return String(global.url || "").replace(/\/+$/, "");
+  }
+  function assetUrl(path) {
+    return `${ASSET_PREFIX}/${String(path).replace(/^\//, "")}`;
+  }
+  function absoluteUrl(url) {
+    if (!url) return siteUrl() + "/";
+    if (/^https?:\/\//.test(url)) return url;
+    return siteUrl() + (String(url).startsWith("/") ? url : `/${url}`);
+  }
+  function metaAuthor() {
+    return String(global.author || "").trim();
+  }
+  function siteName() {
+    return String(global.title || "").trim();
+  }
+  function stripInlineMarkup(text) {
+    // Some titles carry real markup (<i>, <sup>, <br />). Neither a <title>
+    // nor a meta attribute can render it, and letting an HTML binding parse it
+    // silently rewrites or drops characters. Strip named tags only, so
+    // decorative text such as `</>` — no tag name — survives untouched.
+    return String(text)
+      .replace(/<br\s*\/?>/gi, " ")
+      .replace(/<\/?(?:i|b|em|strong|sup|sub|code|span|small|u)\b[^>]*>/gi, "")
+      .replace(/\s{2,}/g, " ");
+  }
+  function metaTitle(title) {
+    return stripInlineMarkup(title || global.title || "").trim();
+  }
+  function metaDescription(description) {
+    // Folded YAML scalars (`description: >`) carry a trailing newline.
+    return String(description || global.description || "").trim();
+  }
+  function metaImage(image) {
+    if (!image) return String(global.defaultSocialImage || "");
+    if (/^https?:\/\//.test(image)) return image;
+    // A leading slash means the front matter already wrote a site-root path;
+    // a bare value is taken as relative to the site's image directory.
+    const path = String(image).startsWith("/") ? String(image) : `/img/${image}`;
+    return absoluteUrl(assetUrl(path));
+  }
+  function metaType(type) {
+    return String(type || "website");
+  }
+  // Analytics only render when global.json sets analyticsWebsiteId.
+  function analyticsId() {
+    return String(global.analyticsWebsiteId || "").trim();
+  }
+  function analyticsSrc() {
+    return String(global.analyticsSrc || "").trim();
+  }
+  function ogLocale(locale) {
+    const map = { en: "en_US", fr: "fr_FR", es: "es_ES" };
+    return map[locale || DEFAULT_LOCALE] || "en_US";
+  }
+</script>
+
+<title @text="metaTitle(title)"></title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" :href="assetUrl('/img/favicon.png')" type="image/png">
+<link rel="apple-touch-icon" :href="assetUrl('/img/apple-touch-icon.png')">
+
+<meta name="author" :content="metaAuthor()">
+<meta name="description" :content="metaDescription(description)">
+
+<meta property="og:type" :content="metaType(type)">
+<meta property="og:site_name" :content="siteName()">
+<meta property="og:locale" :content="ogLocale(locale)">
+<meta property="og:title" :content="metaTitle(title)">
+<meta property="og:description" :content="metaDescription(description)">
+<meta property="og:image" :content="metaImage(image)">
+<meta property="og:url" :content="absoluteUrl(url)">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" :content="metaTitle(title)">
+<meta name="twitter:description" :content="metaDescription(description)">
+<meta name="twitter:image" :content="metaImage(image)">
+
+<link webc:if="canonical_url" rel="canonical" :href="canonical_url">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" webc:keep>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin webc:keep>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" webc:keep>
+<script webc:if="analyticsId()" defer :src="analyticsSrc()" :data-website-id="analyticsId()" webc:keep></script>
+<!-- Bundled (no webc:keep): WebC inlines these into getBundle('css') -->
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/themes.css">
+<script>
+  // Function to initialize the theme
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.body.classList.add('dark-theme');
+      const themeToggle = document.getElementById('theme-toggle');
+      if(themeToggle) {
+        themeToggle.checked = true;
+      }
+    }
+  }
+
+  // Function to toggle theme
+  function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+    const isDark = document.body.classList.contains('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+
+  // Add event listener when DOM is loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    initTheme();
+    
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('change', toggleTheme);
+    }
+  });
+</script>
+
+  

@@ -1,0 +1,56 @@
+{
+  "en": {
+    "tagline": "Free to play. Offline. No ads.",
+    "gamesHeading": "The games",
+    "mascotAlt": "The travelling korrigan beside a menhir",
+    "headAlt": "The travelling korrigan",
+    "languageLabel": "Language",
+    "themeLabel": "Dark theme",
+    "screenshotsHeading": "Screenshots",
+    "playHeading": "Where to play",
+    "playInBrowser": "Play in your browser",
+    "notReleased": "Not released yet.",
+    "status": {
+      "in-development": "In development",
+      "available": "Available"
+    },
+    "footer": "Made in Brittany by",
+    "footerPromise": "No ads, no tracking in the games, no purchases."
+  },
+  "fr": {
+    "tagline": "Gratuit. Hors ligne. Sans publicité.",
+    "gamesHeading": "Les jeux",
+    "mascotAlt": "Le korrigan voyageur à côté d’un menhir",
+    "headAlt": "Le korrigan voyageur",
+    "languageLabel": "Langue",
+    "themeLabel": "Thème sombre",
+    "screenshotsHeading": "Captures d’écran",
+    "playHeading": "Où jouer",
+    "playInBrowser": "Jouer dans le navigateur",
+    "notReleased": "Pas encore sorti.",
+    "status": {
+      "in-development": "En développement",
+      "available": "Disponible"
+    },
+    "footer": "Fait en Bretagne par",
+    "footerPromise": "Pas de publicité, pas de pistage dans les jeux, pas d’achats."
+  },
+  "es": {
+    "tagline": "Gratis. Sin conexión. Sin anuncios.",
+    "gamesHeading": "Los juegos",
+    "mascotAlt": "El korrigan viajero junto a un menhir",
+    "headAlt": "El korrigan viajero",
+    "languageLabel": "Idioma",
+    "themeLabel": "Tema oscuro",
+    "screenshotsHeading": "Capturas de pantalla",
+    "playHeading": "Dónde jugar",
+    "playInBrowser": "Jugar en el navegador",
+    "notReleased": "Todavía no ha salido.",
+    "status": {
+      "in-development": "En desarrollo",
+      "available": "Disponible"
+    },
+    "footer": "Hecho en Bretaña por",
+    "footerPromise": "Sin anuncios, sin rastreo en los juegos, sin compras."
+  }
+}

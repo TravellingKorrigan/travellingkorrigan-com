@@ -1,0 +1,50 @@
+<label class="theme-toggle">
+  <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+  <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox" :aria-label="$data.strings[$data.locale].themeLabel">
+  <span class="theme-toggle-slider" aria-hidden="true"></span>
+  <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+</label>
+
+<style webc:scoped>
+  :host .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--header-text-color);
+    cursor: pointer;
+    position: relative;
+  }
+  :host .theme-toggle-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  :host .theme-toggle-slider {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 22px;
+    transition: background 0.3s;
+  }
+  :host .theme-toggle-slider::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    top: 3px;
+    background: var(--accent);
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+  :host .theme-toggle-checkbox:checked + .theme-toggle-slider::before {
+    transform: translateX(22px);
+  }
+  :host .theme-toggle-checkbox:focus-visible + .theme-toggle-slider {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>

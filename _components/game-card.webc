@@ -1,0 +1,62 @@
+<article class="game-card">
+  <a :href="url" class="game-card-link">
+    <img :src="image" alt="" width="240" height="240" loading="lazy">
+    <span class="game-card-body">
+      <span class="game-card-title" @text="title"></span>
+      <span class="game-card-status" webc:if="status" @text="status"></span>
+      <span class="game-card-brief" @text="brief"></span>
+    </span>
+  </a>
+</article>
+
+<style webc:scoped>
+  :host .game-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--card-shadow);
+  }
+  :host .game-card-link {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+  }
+  :host .game-card-link:hover {
+    text-decoration: none;
+  }
+  :host .game-card-link:hover .game-card-title {
+    text-decoration: underline;
+  }
+  :host img {
+    width: 112px;
+    height: 112px;
+    border-radius: 22%;
+    flex-shrink: 0;
+  }
+  :host .game-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  :host .game-card-title {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--heading-color);
+  }
+  :host .game-card-status {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: var(--accent-soft);
+    color: var(--text-color);
+  }
+</style>

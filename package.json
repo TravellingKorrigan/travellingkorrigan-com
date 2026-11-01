@@ -1,0 +1,15 @@
+{
+  "name": "travellingkorrigan-com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website of Travelling Korrigan, an independent label publishing small games.",
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "author": "Horacio Gonzalez",
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.2",
+    "@11ty/eleventy-plugin-webc": "0.11.2"
+  }
+}

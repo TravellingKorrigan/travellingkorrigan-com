@@ -1,0 +1,63 @@
+/**
+ * Light and dark themes. Colours come from the mascot artwork:
+ * slate navy, hat blue, ochre (hair and triskel), moss, shirt cream.
+ */
+:root {
+  --light-page-background: #ebe5d8;
+  --light-background: #faf7f0;
+  --light-card-background: #ffffff;
+  --light-text: #1f2a2f;
+  --light-heading-color: #2c4350;
+  --light-link-color: #8a5410;
+  --light-gray: #5b6870;
+  --light-border-color: #d9d1c0;
+  --light-card-shadow: rgba(31, 42, 47, 0.12);
+  --light-accent-soft: #efdcae;
+
+  --dark-page-background: #111819;
+  --dark-background: #1d282d;
+  --dark-card-background: #24323a;
+  --dark-text: #ece6d8;
+  --dark-heading-color: #e7b04a;
+  --dark-link-color: #f0c46a;
+  --dark-gray: #a9b4b8;
+  --dark-border-color: #34454e;
+  --dark-card-shadow: rgba(0, 0, 0, 0.5);
+  --dark-accent-soft: #4a4026;
+
+  /* Same in both themes */
+  --header-from: #1d282d;
+  --header-to: #3a505d;
+  --header-text-color: #f3ecdc;
+  --accent: #e3a83a;
+
+  --page-background-color: var(--light-page-background);
+  --main-background-color: var(--light-background);
+  --card-background: var(--light-card-background);
+  --text-color: var(--light-text);
+  --heading-color: var(--light-heading-color);
+  --link-color: var(--light-link-color);
+  --gray: var(--light-gray);
+  --border-color: var(--light-border-color);
+  --card-shadow: var(--light-card-shadow);
+  --accent-soft: var(--light-accent-soft);
+}
+
+body.dark-theme {
+  --page-background-color: var(--dark-page-background);
+  --main-background-color: var(--dark-background);
+  --card-background: var(--dark-card-background);
+  --text-color: var(--dark-text);
+  --heading-color: var(--dark-heading-color);
+  --link-color: var(--dark-link-color);
+  --gray: var(--dark-gray);
+  --border-color: var(--dark-border-color);
+  --card-shadow: var(--dark-card-shadow);
+  --accent-soft: var(--dark-accent-soft);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}

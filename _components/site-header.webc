@@ -1,0 +1,138 @@
+<header class="site-header">
+  <div class="top-bar">
+    <nav class="languages" :aria-label="$data.strings[$data.locale].languageLabel">
+      <script webc:type="js" webc:root>
+        (() => {
+          const languages = [
+            { code: 'en', label: 'EN', name: 'English', url: '/' },
+            { code: 'fr', label: 'FR', name: 'Français', url: '/fr/' },
+            { code: 'es', label: 'ES', name: 'Español', url: '/es/' },
+          ];
+          // Pages sharing a translationKey are translations of each other:
+          // link to the same page in the other language, else to its home.
+          const key = $data.translationKey;
+          const translationUrl = (code) => {
+            if (!key) return null;
+            const match = $data.collections.all.find(item =>
+              item.data.translationKey === key && item.data.locale === code);
+            return match ? match.url : null;
+          };
+          return languages.map(lang => {
+            const current = lang.code === $data.locale;
+            return `<a href="${translationUrl(lang.code) || lang.url}" hreflang="${lang.code}" lang="${lang.code}" title="${lang.name}"${current ? ' aria-current="true" class="active"' : ''}>${lang.label}</a>`;
+          }).join('');
+        })()
+      </script>
+    </nav>
+    <theme-switcher></theme-switcher>
+  </div>
+
+  <script webc:type="js" webc:root>
+    (() => {
+      const l = $data.links[$data.locale];
+      const s = $data.strings[$data.locale];
+      return `<a class="brand" href="${l.home.url}">
+        <img src="/img/korrigan-head.webp" alt="" width="96" height="96">
+        <span class="brand-text">
+          <span class="brand-name">Travelling Korrigan</span>
+          <span class="brand-tagline">${s.tagline}</span>
+        </span>
+      </a>
+      <nav class="site-nav">
+        <a href="${l.home.url}">${l.home.name}</a>
+        <a href="${l.games.url}">${l.games.name}</a>
+        <a href="${l.about.url}">${l.about.name}</a>
+      </nav>`;
+    })()
+  </script>
+</header>
+
+<style webc:scoped>
+  :host .site-header {
+    background: linear-gradient(135deg, var(--header-from), var(--header-to));
+    color: var(--header-text-color);
+    padding: 0.75rem 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  :host .top-bar {
+    align-self: stretch;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+  }
+  :host .languages {
+    display: flex;
+    gap: 0.25rem;
+  }
+  :host .languages a {
+    color: var(--header-text-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    opacity: 0.75;
+  }
+  :host .languages a:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
+  :host .languages a.active {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.12);
+  }
+  :host .brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--header-text-color);
+    text-decoration: none;
+  }
+  :host .brand:hover {
+    text-decoration: none;
+  }
+  :host .brand img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  :host .brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+  :host .brand-name {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
+    line-height: 1.1;
+  }
+  :host .brand-tagline {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: clamp(0.9rem, 3vw, 1.05rem);
+    margin-top: 0.25rem;
+  }
+  :host .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  :host .site-nav a {
+    color: var(--header-text-color);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+  }
+  :host .site-nav a:hover {
+    border-bottom-color: var(--accent);
+    text-decoration: none;
+  }
+</style>

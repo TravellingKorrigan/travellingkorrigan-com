@@ -1,0 +1,25 @@
+<footer class="site-footer">
+  <script webc:type="js" webc:root>
+    (() => {
+      const l = $data.links[$data.locale];
+      const s = $data.strings[$data.locale];
+      return `<p>${s.footerPromise}</p>
+      <p>${s.footer} <a href="https://github.com/LostInBrittany">Horacio Gonzalez</a>, ${new Date().getFullYear()}.
+      <a href="${l.privacy.url}">${l.privacy.name}</a></p>`;
+    })()
+  </script>
+</footer>
+
+<style webc:scoped>
+  :host .site-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--gray);
+  }
+  :host .site-footer p {
+    margin: 0.4rem 0;
+  }
+</style>

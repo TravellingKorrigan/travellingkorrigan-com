@@ -1,0 +1,79 @@
+<!doctype html>
+<script webc:setup>
+  function gamesFor(games, locale) {
+    return games.filter((game) => game.data.locale === locale);
+  }
+</script>
+<html :lang="locale">
+<head>
+  <meta webc:is="head-commons" webc:nokeep
+        :@title="title" :@description="description" :@url="page.url"
+        :@image="image" :@locale="locale">
+
+  <style @raw="getBundle('css')" webc:keep></style>
+  <script @raw="getBundle('js')" webc:keep></script>
+</head>
+<body>
+  <main>
+    <site-header></site-header>
+
+    <section class="hero">
+      <img class="hero-mascot" src="/img/korrigan-menhir.webp" width="320" height="480"
+           :alt="strings[locale].mascotAlt">
+      <div class="hero-text" @html="content"></div>
+    </section>
+
+    <section class="games prose">
+      <h2 @text="strings[locale].gamesHeading"></h2>
+      <div class="game-list">
+        <game-card webc:for="game of gamesFor(collections.games, locale)"
+          :@title="game.data.title" :@url="game.url" :@image="game.data.card_image"
+          :@brief="game.data.brief" :@status="strings[locale].status[game.data.status]"></game-card>
+      </div>
+    </section>
+
+    <site-footer></site-footer>
+  </main>
+</body>
+</html>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 1rem 0;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-mascot {
+    width: 240px;
+    flex-shrink: 0;
+  }
+  .hero-text {
+    max-width: 52ch;
+  }
+  .hero-text h1 {
+    margin-top: 0;
+  }
+  .hero-text strong {
+    font-family: var(--heading-font);
+    font-size: 1.35rem;
+    color: var(--heading-color);
+  }
+  .game-list {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (max-width: 640px) {
+    .hero {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: 1rem;
+    }
+    .hero-mascot {
+      width: 180px;
+    }
+  }
+</style>
