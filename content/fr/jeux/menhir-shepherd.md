@@ -18,9 +18,9 @@ app_store: ''
 release_note: Menhir Shepherd est encore en développement. Il sera gratuit sur Google Play et l'App Store, et jouable dans votre navigateur, sans compte et sans connexion.
 screenshots:
   - src: /img/games/menhir-shepherd/game.webp
-    alt: Une nuit à Carnac. La korriganez et sa lanterne sur la lande surélevée, deux menhirs et leurs socles, de l'eau tout autour
+    alt: Une nuit à Carnac. La korrigane et sa lanterne sur la lande surélevée, deux menhirs et leurs socles, de l'eau tout autour
   - src: /img/games/menhir-shepherd/dawn.webp
-    alt: L'aube. La korriganez se repose contre un menhir. Chaque pierre est rentrée.
+    alt: L'aube. La korrigane se repose contre un menhir. Chaque pierre est rentrée.
   - src: /img/games/menhir-shepherd/gulf.webp
     alt: Locmariaquer. Un pré salé fleuri d'armérias au bord du golfe du Morbihan
   - src: /img/games/menhir-shepherd/forest.webp
@@ -28,7 +28,7 @@ screenshots:
   - src: /img/games/menhir-shepherd/nights.webp
     alt: Toutes les nuits, série par série, chacune Douce, Classique ou Rusée
   - src: /img/games/menhir-shepherd/menu.webp
-    alt: Le menu, avec le choix entre la korriganez et le korrigan
+    alt: Le menu, avec le choix entre la korrigane et le korrigan
   - src: /img/games/menhir-shepherd/regions.webp
     alt: Trois régions côte à côte, la lande de Carnac, le bord du golfe et une clairière de la forêt
     wide: true
@@ -42,7 +42,7 @@ Les premières nuits, les alignements de Carnac, le bord du golfe du Morbihan à
 
 ## Deux korrigans
 
-Jouez la korriganez et sa coiffe de dentelle, ou le korrigan et son chapeau rond breton. Tous deux portent une petite lanterne, poussent de tout leur poids, et se reposent contre un menhir quand la nuit est finie.
+Jouez la korrigane et sa coiffe de dentelle, ou le korrigan et son chapeau rond breton. Tous deux portent une petite lanterne, poussent de tout leur poids, et se reposent contre un menhir quand la nuit est finie.
 
 ## Pour rester tranquille
 
