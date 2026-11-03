@@ -9,4 +9,4 @@ description: The games of Travelling Korrigan. Free to play, offline, no ads.
 
 # Games
 
-Every game here is free, works offline and shows no ads. There is only one for now. More will come, at their own pace.
+Every game here is free, works offline and shows no ads. There are three so far. More will come, at their own pace.
