@@ -9,4 +9,4 @@ description: Los juegos de Travelling Korrigan. Gratis, sin conexión, sin anunc
 
 # Juegos
 
-Todos los juegos de aquí son gratis, funcionan sin conexión y no muestran anuncios. De momento solo hay uno. Vendrán más, a su ritmo.
+Todos los juegos de aquí son gratis, funcionan sin conexión y no muestran anuncios. De momento hay tres. Vendrán más, a su ritmo.

@@ -9,4 +9,4 @@ description: Les jeux de Travelling Korrigan. Gratuits, hors ligne, sans publici
 
 # Jeux
 
-Chaque jeu ici est gratuit, fonctionne hors ligne et n’affiche aucune publicité. Il n’y en a qu’un pour l’instant. D’autres viendront, à leur rythme.
+Chaque jeu ici est gratuit, fonctionne hors ligne et n’affiche aucune publicité. Il y en a trois pour l’instant. D’autres viendront, à leur rythme.
