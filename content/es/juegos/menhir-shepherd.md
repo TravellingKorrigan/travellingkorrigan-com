@@ -18,9 +18,9 @@ app_store: ''
 release_note: Menhir Shepherd todavía está en desarrollo. Será gratis en Google Play y en la App Store, y se podrá jugar en el navegador, sin cuenta y sin conexión.
 screenshots:
   - src: /img/games/menhir-shepherd/game.webp
-    alt: Una noche en Carnac. La korriganez y su farol en el páramo elevado, dos menhires y sus huecos, agua alrededor
+    alt: Una noche en Carnac. La korrigan y su farol en el páramo elevado, dos menhires y sus huecos, agua alrededor
   - src: /img/games/menhir-shepherd/dawn.webp
-    alt: El alba. La korriganez descansa apoyada en un menhir. Cada piedra está en casa.
+    alt: El alba. La korrigan descansa apoyada en un menhir. Cada piedra está en casa.
   - src: /img/games/menhir-shepherd/gulf.webp
     alt: Locmariaquer. Un prado salado con armerias a orillas del golfo de Morbihan
   - src: /img/games/menhir-shepherd/forest.webp
@@ -28,7 +28,7 @@ screenshots:
   - src: /img/games/menhir-shepherd/nights.webp
     alt: Todas las noches, serie por serie, cada una Suave, Clásica o Astuta
   - src: /img/games/menhir-shepherd/menu.webp
-    alt: El menú, con la elección entre la korriganez y el korrigan
+    alt: El menú, con la elección entre la korrigan y el korrigan
   - src: /img/games/menhir-shepherd/regions.webp
     alt: Tres regiones una junto a otra, el páramo de Carnac, la orilla del golfo y un claro del bosque
     wide: true
@@ -42,7 +42,7 @@ Las primeras noches, los alineamientos de Carnac, la orilla del golfo de Morbiha
 
 ## Dos korrigans
 
-Juega con la korriganez y su cofia de encaje, o con el korrigan y su sombrero redondo bretón. Los dos llevan un pequeño farol, empujan con todo su peso y descansan apoyados en un menhir cuando termina la noche.
+Juega con la korrigan y su cofia de encaje, o con el korrigan y su sombrero redondo bretón. Los dos llevan un pequeño farol, empujan con todo su peso y descansan apoyados en un menhir cuando termina la noche.
 
 ## Hecho para la calma
 
