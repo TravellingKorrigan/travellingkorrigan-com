@@ -18,18 +18,20 @@
   <script @raw="getBundle('js')" webc:keep></script>
 </head>
 <body>
-  <main>
+  <div class="page">
     <site-header></site-header>
-    <section class="prose">
-      <div @html="content"></div>
-      <div class="game-list">
-        <game-card webc:for="game of gamesFor(collections.games, locale)"
-          :@title="game.data.title" :@url="game.url" :@image="game.data.card_image"
-          :@brief="game.data.brief" :@status="strings[locale].status[game.data.status]"></game-card>
-      </div>
-    </section>
+    <main>
+      <section class="prose">
+        <div @html="content"></div>
+        <div class="game-list">
+          <game-card webc:for="game of gamesFor(collections.games, locale)"
+            :@title="game.data.title" :@url="game.url" :@image="game.data.card_image"
+            :@brief="game.data.brief" :@status="strings[locale].status[game.data.status]"></game-card>
+        </div>
+      </section>
+    </main>
     <site-footer></site-footer>
-  </main>
+  </div>
 </body>
 </html>
 

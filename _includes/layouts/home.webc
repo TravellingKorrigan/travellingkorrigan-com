@@ -18,26 +18,26 @@
   <script @raw="getBundle('js')" webc:keep></script>
 </head>
 <body>
-  <main>
+  <div class="page">
     <site-header></site-header>
+    <main>
+      <section class="hero">
+        <img class="hero-mascot" src="/img/korrigan-menhir.webp" width="320" height="480"
+             :alt="strings[locale].mascotAlt">
+        <div class="hero-text" @html="content"></div>
+      </section>
 
-    <section class="hero">
-      <img class="hero-mascot" src="/img/korrigan-menhir.webp" width="320" height="480"
-           :alt="strings[locale].mascotAlt">
-      <div class="hero-text" @html="content"></div>
-    </section>
-
-    <section class="games prose">
-      <h2 @text="strings[locale].gamesHeading"></h2>
-      <div class="game-list">
-        <game-card webc:for="game of gamesFor(collections.games, locale)"
-          :@title="game.data.title" :@url="game.url" :@image="game.data.card_image"
-          :@brief="game.data.brief" :@status="strings[locale].status[game.data.status]"></game-card>
-      </div>
-    </section>
-
+      <section class="games prose">
+        <h2 @text="strings[locale].gamesHeading"></h2>
+        <div class="game-list">
+          <game-card webc:for="game of gamesFor(collections.games, locale)"
+            :@title="game.data.title" :@url="game.url" :@image="game.data.card_image"
+            :@brief="game.data.brief" :@status="strings[locale].status[game.data.status]"></game-card>
+        </div>
+      </section>
+    </main>
     <site-footer></site-footer>
-  </main>
+  </div>
 </body>
 </html>
 

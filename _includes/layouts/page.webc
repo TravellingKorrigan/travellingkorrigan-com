@@ -15,10 +15,12 @@
   <script @raw="getBundle('js')" webc:keep></script>
 </head>
 <body>
-  <main>
+  <div class="page">
     <site-header></site-header>
-    <article class="prose" @html="content"></article>
+    <main>
+      <article class="prose" @html="content"></article>
+    </main>
     <site-footer></site-footer>
-  </main>
+  </div>
 </body>
 </html>
