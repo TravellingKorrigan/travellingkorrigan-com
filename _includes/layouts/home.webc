@@ -3,11 +3,15 @@
   function gamesFor(games, locale) {
     return games.filter((game) => game.data.locale === locale);
   }
+  function canonicalUrl(pageUrl) {
+    return String(global.url || "").replace(/\/+$/, "") + pageUrl;
+  }
 </script>
 <html :lang="locale">
 <head>
   <meta webc:is="head-commons" webc:nokeep
         :@title="title" :@description="description" :@url="page.url"
+        :@canonical_url="canonicalUrl(page.url)"
         :@image="image" :@locale="locale">
 
   <style @raw="getBundle('css')" webc:keep></style>
