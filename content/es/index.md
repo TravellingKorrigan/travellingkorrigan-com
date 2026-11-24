@@ -2,7 +2,7 @@
 layout: layouts/home.webc
 locale: es
 translationKey: home
-title: Travelling Korrigan
+title: Pequeños juegos para momentos tranquilos | Travelling Korrigan
 permalink: /es/
 description: Pequeños juegos hechos con estándares web. Juega en el navegador o instálalos desde las tiendas de aplicaciones. Gratis. Sin conexión. Sin anuncios.
 ---

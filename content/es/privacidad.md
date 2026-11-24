@@ -21,7 +21,7 @@ Tu progreso y tus ajustes se guardan solo en tu dispositivo. Nada sale de él. S
 
 Esta web es un conjunto de páginas estáticas alojadas en GitHub Pages. Para servirlas, GitHub recibe datos técnicos como tu dirección IP, tal y como describe la [declaración de privacidad de GitHub](https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement).
 
-Las páginas cargan sus tipografías desde Google Fonts, así que Google también recibe tu dirección IP cuando la visitas.
+Las páginas cargan sus tipografías desde este mismo sitio: ninguna solicitud se envía a Google cuando la visitas.
 {% if global.analyticsWebsiteId != "" %}
 Para contar las visitas, la web usa una instancia propia de Umami, una herramienta de analíticas respetuosa con la privacidad. No usa cookies y no guarda tu dirección IP ni ningún dato personal.
 {% endif %}

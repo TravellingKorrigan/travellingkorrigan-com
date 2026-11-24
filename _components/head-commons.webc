@@ -2,7 +2,8 @@
   // ── Shared head-commons ────────────────────────────────────────────────────
   // Adapted from the shared head-commons of lostinbrittany.org / .com / .dev
   // and korriganpress.com. Keep the setup and meta blocks in sync with them;
-  // here only SITE KNOBS, the font links and the analytics helpers differ.
+  // here only SITE KNOBS and the analytics helpers differ. Fonts are
+  // self-hosted (see css/fonts.css), so no request goes to Google Fonts.
   //
   // Scoping rules this component depends on (verified against real builds):
   //  1. `global.*` cannot be dereferenced in the attribute bindings below.
@@ -78,13 +79,22 @@
     const map = { en: "en_US", fr: "fr_FR", es: "es_ES" };
     return map[locale || DEFAULT_LOCALE] || "en_US";
   }
+  function jsonLd() {
+    return JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: siteName(),
+      url: siteUrl() + '/',
+      inLanguage: ['en', 'fr', 'es'],
+      author: { '@type': 'Person', name: metaAuthor(), url: 'https://github.com/LostInBrittany' }
+    });
+  }
 </script>
 
 <title @text="metaTitle(title)"></title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://analytics.lostinbrittany.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://analytics.lostinbrittany.dev; object-src 'none'; base-uri 'self'; form-action 'self'">
 <link rel="icon" :href="assetUrl('/img/favicon.png')" type="image/png">
 <link rel="apple-touch-icon" :href="assetUrl('/img/apple-touch-icon.png')">
 
@@ -142,42 +152,42 @@
   })()
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" webc:keep>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin webc:keep>
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" webc:keep>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://analytics.lostinbrittany.dev; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://analytics.lostinbrittany.dev; object-src 'none'; base-uri 'self'; form-action 'self'">
+
+<script webc:type="js" webc:root>
+  (() => {
+    // webc:keep on the emitted tag stops WebC from stripping its type attribute.
+    return '<script type="application/ld+json" webc:keep>' + jsonLd() + '</scr' + 'ipt>';
+  })()
+</script>
+
 <script webc:if="analyticsId()" defer :src="analyticsSrc()" :data-website-id="analyticsId()" webc:keep></script>
 <!-- Bundled (no webc:keep): WebC inlines these into getBundle('css') -->
+<link rel="stylesheet" href="../css/fonts.css">
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/themes.css">
 <script>
-  // Function to initialize the theme
-  function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      document.body.classList.add('dark-theme');
-      const themeToggle = document.getElementById('theme-toggle');
-      if(themeToggle) {
-        themeToggle.checked = true;
-      }
-    }
-  }
+  // Apply the theme on <html> before first paint, so dark-mode users
+  // never see a flash of the light theme.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    var dark = saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (dark) document.documentElement.classList.add('dark-theme');
+  })();
 
-  // Function to toggle theme
   function toggleTheme() {
-    document.body.classList.toggle('dark-theme');
-    const isDark = document.body.classList.contains('dark-theme');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    var dark = document.documentElement.classList.toggle('dark-theme');
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+    var toggle = document.getElementById('theme-toggle');
+    if (toggle) toggle.checked = dark;
   }
 
-  // Add event listener when DOM is loaded
-  document.addEventListener('DOMContentLoaded', function() {
-    initTheme();
-    
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-      themeToggle.addEventListener('change', toggleTheme);
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('theme-toggle');
+    if (toggle) {
+      toggle.checked = document.documentElement.classList.contains('dark-theme');
+      toggle.addEventListener('change', toggleTheme);
     }
   });
 </script>

@@ -21,7 +21,7 @@ Votre progression et vos réglages sont enregistrés uniquement sur votre appare
 
 Ce site est un ensemble de pages statiques, hébergé sur GitHub Pages. Pour les servir, GitHub reçoit des données techniques comme votre adresse IP, comme le décrit la [déclaration de confidentialité de GitHub](https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement).
 
-Les pages chargent leurs polices depuis Google Fonts : Google reçoit donc aussi votre adresse IP lors de votre visite.
+Les pages chargent leurs polices depuis ce site lui-même : aucune requête n’est envoyée à Google lors de votre visite.
 {% if global.analyticsWebsiteId != "" %}
 Pour compter les visites, le site utilise une instance auto-hébergée d’Umami, un outil de statistiques respectueux de la vie privée. Il ne dépose aucun cookie et ne conserve ni votre adresse IP ni aucune donnée personnelle.
 {% endif %}

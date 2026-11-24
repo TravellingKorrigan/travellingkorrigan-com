@@ -43,7 +43,7 @@
   --accent-soft: var(--light-accent-soft);
 }
 
-body.dark-theme {
+html.dark-theme {
   --page-background-color: var(--dark-page-background);
   --main-background-color: var(--dark-background);
   --card-background: var(--dark-card-background);
