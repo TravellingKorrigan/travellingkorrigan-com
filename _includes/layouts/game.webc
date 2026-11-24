@@ -1,49 +1,58 @@
 <!doctype html>
+<script webc:setup>
+  function canonicalUrl(pageUrl) {
+    return String(global.url || "").replace(/\/+$/, "") + pageUrl;
+  }
+</script>
 <html :lang="locale">
 <head>
   <meta webc:is="head-commons" webc:nokeep
         :@title="title + ' | ' + global.title" :@description="description" :@url="page.url"
+        :@canonical_url="canonicalUrl(page.url)"
         :@image="image" :@locale="locale" :@type="'article'">
 
   <style @raw="getBundle('css')" webc:keep></style>
   <script @raw="getBundle('js')" webc:keep></script>
 </head>
 <body>
-  <main>
+  <a class="skip-link" href="#main-content" @text="strings[locale].skipLink"></a>
+  <div class="page">
     <site-header></site-header>
-    <article class="game prose">
-      <header class="game-header">
-        <img :src="card_image" alt="" width="160" height="160">
-        <div>
-          <h1 @text="title"></h1>
-          <p class="game-brief" @text="brief"></p>
-          <span class="game-status" webc:if="status" @text="strings[locale].status[status]"></span>
-        </div>
-      </header>
+    <main id="main-content">
+      <article class="game prose">
+        <header class="game-header">
+          <img :src="card_image" alt="" width="160" height="160">
+          <div>
+            <h1 @text="title"></h1>
+            <p class="game-brief" @text="brief"></p>
+            <span class="game-status" webc:if="status" @text="strings[locale].status[status]"></span>
+          </div>
+        </header>
 
-      <div @html="content"></div>
+        <div @html="content"></div>
 
-      <h2 @text="strings[locale].playHeading"></h2>
-      <p webc:if="play_url">
-        <a class="play-button" :href="play_url" @text="strings[locale].playInBrowser"></a>
-      </p>
-      <p webc:if="play_url && play_note" class="play-note" @text="play_note"></p>
-      <p webc:if="google_play"><a :href="google_play">Google Play</a></p>
-      <p webc:if="app_store"><a :href="app_store">App Store</a></p>
-      <p webc:if="!play_url && !google_play && !app_store" @html="release_note || strings[locale].notReleased"></p>
+        <h2 @text="strings[locale].playHeading"></h2>
+        <p webc:if="play_url">
+          <a class="play-button" :href="play_url" @text="strings[locale].playInBrowser"></a>
+        </p>
+        <p webc:if="play_url && play_note" class="play-note" @text="play_note"></p>
+        <p webc:if="google_play"><a :href="google_play">Google Play</a></p>
+        <p webc:if="app_store"><a :href="app_store">App Store</a></p>
+        <p webc:if="!play_url && !google_play && !app_store" @html="release_note || strings[locale].notReleased"></p>
 
-      <section webc:if="screenshots" class="screenshots">
-        <h2 @text="strings[locale].screenshotsHeading"></h2>
-        <div class="screenshot-grid">
-          <figure webc:for="shot of screenshots" :class="shot.wide ? 'wide' : ''">
-            <img :src="shot.src" :alt="shot.alt" loading="lazy">
-            <figcaption @text="shot.alt"></figcaption>
-          </figure>
-        </div>
-      </section>
-    </article>
+        <section webc:if="screenshots" class="screenshots">
+          <h2 @text="strings[locale].screenshotsHeading"></h2>
+          <div class="screenshot-grid">
+            <figure webc:for="shot of screenshots" :class="shot.wide ? 'wide' : ''">
+              <img :src="shot.src" :alt="shot.alt" loading="lazy">
+              <figcaption @text="shot.alt"></figcaption>
+            </figure>
+          </div>
+        </section>
+      </article>
+    </main>
     <site-footer></site-footer>
-  </main>
+  </div>
 </body>
 </html>
 

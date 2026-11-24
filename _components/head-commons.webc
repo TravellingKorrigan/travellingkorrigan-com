@@ -84,6 +84,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://analytics.lostinbrittany.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://analytics.lostinbrittany.dev; object-src 'none'; base-uri 'self'; form-action 'self'">
 <link rel="icon" :href="assetUrl('/img/favicon.png')" type="image/png">
 <link rel="apple-touch-icon" :href="assetUrl('/img/apple-touch-icon.png')">
 
@@ -104,6 +105,42 @@
 <meta name="twitter:image" :content="metaImage(image)">
 
 <link webc:if="canonical_url" rel="canonical" :href="canonical_url">
+
+<script webc:type="js" webc:root>
+  (() => {
+    const languages = [
+      { code: 'en', home: '/' },
+      { code: 'fr', home: '/fr/' },
+      { code: 'es', home: '/es/' },
+    ];
+    // These strings land in HTML attributes, so escape them.
+    const esc = (value) => String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;');
+    // Pages sharing a translationKey are translations of each other: point at
+    // the same page in the other language, else at that locale's home page.
+    const key = $data.translationKey;
+    const all = ($data.collections && $data.collections.all) || [];
+    const translationUrl = (code) => {
+      const match = key && all.find((item) =>
+        item.data.translationKey === key && item.data.locale === code);
+      if (match) return match.url;
+      const home = all.find((item) =>
+        item.data.locale === code && item.data.translationKey === 'home');
+      const fallback = languages.find((lang) => lang.code === code);
+      return home ? home.url : fallback.home;
+    };
+    const base = siteUrl();
+    const links = languages.map((lang) =>
+      `<link rel="alternate" hreflang="${lang.code}" href="${esc(base + translationUrl(lang.code))}">`);
+    links.push(`<link rel="alternate" hreflang="x-default" href="${esc(base + translationUrl('en'))}">`);
+    const ogAlternates = languages
+      .filter((lang) => lang.code !== $data.locale)
+      .map((lang) => `<meta property="og:locale:alternate" content="${ogLocale(lang.code)}">`);
+    return links.concat(ogAlternates).join('\n');
+  })()
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" webc:keep>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin webc:keep>

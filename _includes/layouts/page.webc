@@ -1,18 +1,27 @@
 <!doctype html>
+<script webc:setup>
+  function canonicalUrl(pageUrl) {
+    return String(global.url || "").replace(/\/+$/, "") + pageUrl;
+  }
+</script>
 <html :lang="locale">
 <head>
   <meta webc:is="head-commons" webc:nokeep
         :@title="title + ' | ' + global.title" :@description="description" :@url="page.url"
+        :@canonical_url="canonicalUrl(page.url)"
         :@image="image" :@locale="locale">
 
   <style @raw="getBundle('css')" webc:keep></style>
   <script @raw="getBundle('js')" webc:keep></script>
 </head>
 <body>
-  <main>
+  <a class="skip-link" href="#main-content" @text="strings[locale].skipLink"></a>
+  <div class="page">
     <site-header></site-header>
-    <article class="prose" @html="content"></article>
+    <main id="main-content">
+      <article class="prose" @html="content"></article>
+    </main>
     <site-footer></site-footer>
-  </main>
+  </div>
 </body>
 </html>
