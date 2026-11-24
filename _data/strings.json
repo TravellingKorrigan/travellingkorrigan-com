@@ -17,7 +17,8 @@
       "available": "Available"
     },
     "footer": "Made in Brittany by",
-    "footerPromise": "No ads, no tracking in the games, no purchases."
+    "footerPromise": "No ads, no tracking in the games, no purchases.",
+    "rights": "All rights reserved."
   },
   "fr": {
     "tagline": "Gratuit. Hors ligne. Sans publicité.",
@@ -37,7 +38,8 @@
       "available": "Disponible"
     },
     "footer": "Fait en Bretagne par",
-    "footerPromise": "Pas de publicité, pas de pistage dans les jeux, pas d’achats."
+    "footerPromise": "Pas de publicité, pas de pistage dans les jeux, pas d’achats.",
+    "rights": "Tous droits réservés."
   },
   "es": {
     "tagline": "Gratis. Sin conexión. Sin anuncios.",
@@ -57,6 +59,7 @@
       "available": "Disponible"
     },
     "footer": "Hecho en Bretaña por",
-    "footerPromise": "Sin anuncios, sin rastreo en los juegos, sin compras."
+    "footerPromise": "Sin anuncios, sin rastreo en los juegos, sin compras.",
+    "rights": "Todos los derechos reservados."
   }
 }

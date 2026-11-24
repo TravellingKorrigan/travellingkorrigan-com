@@ -21,7 +21,7 @@ Your progress and settings are saved on your device only. Nothing leaves it. Uni
 
 This website is a set of static pages, hosted on GitHub Pages. To serve them, GitHub receives technical data such as your IP address, as described in [GitHub's privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
 
-The pages load their fonts from Google Fonts, so Google also receives your IP address when you visit.
+The pages load their fonts from this site itself, so visiting sends no request to Google.
 {% if global.analyticsWebsiteId != "" %}
 To count visits, the site uses a self-hosted instance of Umami, a privacy-friendly analytics tool. It sets no cookies and does not store your IP address or any personal data.
 {% endif %}

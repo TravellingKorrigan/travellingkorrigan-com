@@ -44,7 +44,7 @@
           <h2 @text="strings[locale].screenshotsHeading"></h2>
           <div class="screenshot-grid">
             <figure webc:for="shot of screenshots" :class="shot.wide ? 'wide' : ''">
-              <img :src="shot.src" :alt="shot.alt" loading="lazy">
+              <img :src="shot.src" alt="" loading="lazy">
               <figcaption @text="shot.alt"></figcaption>
             </figure>
           </div>

@@ -1,0 +1,16 @@
+/* Self-hosted variable fonts (latin subset), replacing Google Fonts. */
+@font-face {
+  font-family: 'Alegreya';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/alegreya-var.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url('/fonts/open-sans-var.woff2') format('woff2');
+}
