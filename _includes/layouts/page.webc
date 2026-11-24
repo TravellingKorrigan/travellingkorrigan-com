@@ -15,9 +15,10 @@
   <script @raw="getBundle('js')" webc:keep></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content" @text="strings[locale].skipLink"></a>
   <div class="page">
     <site-header></site-header>
-    <main>
+    <main id="main-content">
       <article class="prose" @html="content"></article>
     </main>
     <site-footer></site-footer>

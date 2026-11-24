@@ -1,6 +1,7 @@
 {
   "en": {
     "tagline": "Free to play. Offline. No ads.",
+    "skipLink": "Skip to content",
     "gamesHeading": "The games",
     "mascotAlt": "The travelling korrigan beside a menhir",
     "headAlt": "The travelling korrigan",
@@ -20,6 +21,7 @@
   },
   "fr": {
     "tagline": "Gratuit. Hors ligne. Sans publicité.",
+    "skipLink": "Aller au contenu",
     "gamesHeading": "Les jeux",
     "mascotAlt": "Le korrigan voyageur à côté d’un menhir",
     "headAlt": "Le korrigan voyageur",
@@ -39,6 +41,7 @@
   },
   "es": {
     "tagline": "Gratis. Sin conexión. Sin anuncios.",
+    "skipLink": "Saltar al contenido",
     "gamesHeading": "Los juegos",
     "mascotAlt": "El korrigan viajero junto a un menhir",
     "headAlt": "El korrigan viajero",

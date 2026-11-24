@@ -36,6 +36,23 @@ main a:hover {
   text-decoration-thickness: 2px;
 }
 
+/* Skip link: hidden off-screen until keyboard focus (WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #1d282d;
+  border-radius: 4px;
+}
+
 h1, h2, h3, h4 {
   font-family: var(--heading-font);
   font-weight: 700;

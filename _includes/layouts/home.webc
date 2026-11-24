@@ -18,9 +18,10 @@
   <script @raw="getBundle('js')" webc:keep></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content" @text="strings[locale].skipLink"></a>
   <div class="page">
     <site-header></site-header>
-    <main>
+    <main id="main-content">
       <section class="hero">
         <img class="hero-mascot" src="/img/korrigan-menhir.webp" width="320" height="480"
              :alt="strings[locale].mascotAlt">
