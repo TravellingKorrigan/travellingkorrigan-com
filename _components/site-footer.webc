@@ -6,7 +6,7 @@
       return `<p>${s.footerPromise}</p>
       <p>${s.footer} <a href="https://github.com/LostInBrittany">Horacio Gonzalez</a>, ${new Date().getFullYear()}.
       <a href="${l.privacy.url}">${l.privacy.name}</a></p>
-      <p>&copy; ${new Date().getFullYear()} Horacio "LostInBrittany" Gonzalez.</p>`;
+      <p>&copy; ${new Date().getFullYear()} Horacio "LostInBrittany" Gonzalez. ${s.rights}</p>`;
     })()
   </script>
 </footer>
