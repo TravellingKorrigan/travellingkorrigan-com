@@ -106,6 +106,42 @@
 
 <link webc:if="canonical_url" rel="canonical" :href="canonical_url">
 
+<script webc:type="js" webc:root>
+  (() => {
+    const languages = [
+      { code: 'en', home: '/' },
+      { code: 'fr', home: '/fr/' },
+      { code: 'es', home: '/es/' },
+    ];
+    // These strings land in HTML attributes, so escape them.
+    const esc = (value) => String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;');
+    // Pages sharing a translationKey are translations of each other: point at
+    // the same page in the other language, else at that locale's home page.
+    const key = $data.translationKey;
+    const all = ($data.collections && $data.collections.all) || [];
+    const translationUrl = (code) => {
+      const match = key && all.find((item) =>
+        item.data.translationKey === key && item.data.locale === code);
+      if (match) return match.url;
+      const home = all.find((item) =>
+        item.data.locale === code && item.data.translationKey === 'home');
+      const fallback = languages.find((lang) => lang.code === code);
+      return home ? home.url : fallback.home;
+    };
+    const base = siteUrl();
+    const links = languages.map((lang) =>
+      `<link rel="alternate" hreflang="${lang.code}" href="${esc(base + translationUrl(lang.code))}">`);
+    links.push(`<link rel="alternate" hreflang="x-default" href="${esc(base + translationUrl('en'))}">`);
+    const ogAlternates = languages
+      .filter((lang) => lang.code !== $data.locale)
+      .map((lang) => `<meta property="og:locale:alternate" content="${ogLocale(lang.code)}">`);
+    return links.concat(ogAlternates).join('\n');
+  })()
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" webc:keep>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin webc:keep>
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" webc:keep>
